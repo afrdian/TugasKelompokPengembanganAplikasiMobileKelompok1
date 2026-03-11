@@ -22,16 +22,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.danza.avatar.ui.theme.AvatarTheme
 
-class ProfileActivity : ComponentActivity() {
+class Profile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AvatarTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ProfileScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    val nama = intent.getStringExtra("USER_NAMA") ?: "Guest"
+                    val nim = intent.getStringExtra("USER_NIM") ?: "-"
+                    ProfileScreen(nama = nama, nim = nim, modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -39,7 +39,7 @@ class ProfileActivity : ComponentActivity() {
 }
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier) {
+fun ProfileScreen(nama: String, nim: String, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -68,7 +68,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
         // Nama
         Text(
-            text = "Nama Anda",
+            text = "Nama: $nama",
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSurface
@@ -76,7 +76,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
         // NIM
         Text(
-            text = "NIM: 123456789",
+            text = "NIM: $nim",
             fontSize = 18.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -99,6 +99,6 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 @Composable
 fun ProfilePreview() {
     AvatarTheme {
-        ProfileScreen()
+        ProfileScreen(nama = "John Doe", nim = "123456789")
     }
 }
