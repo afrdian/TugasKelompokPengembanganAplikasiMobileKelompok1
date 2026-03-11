@@ -66,12 +66,12 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         )
 
         Text(
-            text = "Welcome to Heaven!",
+            text = "Welcome to Heaven",
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            text = "Keep your data safe!",
+            text = "The Constant Observer",
             style = MaterialTheme.typography.bodyMedium,
             color = Color.Gray,
             modifier = Modifier.padding(bottom = 32.dp)
@@ -136,7 +136,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             Text("Don't have an account? ")
             Text(
-                text = "Register!",
+                text = "Register",
                 color = MaterialTheme.colorScheme.primary,
                 textDecoration = TextDecoration.Underline,
                 modifier = Modifier.clickable {
