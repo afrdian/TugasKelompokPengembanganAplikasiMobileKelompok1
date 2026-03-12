@@ -238,7 +238,9 @@ Kalau memakai GitHub, biasanya kamu perlu login ke akun GitHub atau menggunakan 
 - Jalankan `git status` sebelum commit agar kamu tahu file apa saja yang akan dikirim.
 - Pastikan file yang tidak perlu ikut dikirim sudah masuk ke `.gitignore`.
 - Untuk project Android Studio, file hasil build sebaiknya tidak ikut di-push.
+- 
 
 ## Penutup
 
 Kalau langkah-langkah di atas dijalankan dengan benar, maka project Android Studio kamu akan berhasil dikirim dan diperbarui di repository GitHub.
+DAN SELESAIIIIIIIIIIIIIIIII
