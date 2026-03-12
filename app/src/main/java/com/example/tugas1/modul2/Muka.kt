@@ -1,5 +1,6 @@
 package com.example.tugas1.modul2
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,8 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.danza.avatar.Login
 import com.example.tugas1.R
 
 class Muka : ComponentActivity() {
@@ -122,6 +125,18 @@ fun MukaScreen(onBackClick: () -> Unit = {}) {
             ToggleRow(label = "Nose",  checked = noseVisible,  onCheckedChange = { noseVisible  = it })
             ToggleRow(label = "Mouth", checked = mouthVisible, onCheckedChange = { mouthVisible = it })
             ToggleRow(label = "Hair",  checked = hairVisible,  onCheckedChange = { hairVisible  = it })
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            val context = LocalContext.current
+            Button(
+                onClick = {
+                    context.startActivity(Intent(context, Login::class.java))
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Go to Profile")
+            }
         }
     }
 }

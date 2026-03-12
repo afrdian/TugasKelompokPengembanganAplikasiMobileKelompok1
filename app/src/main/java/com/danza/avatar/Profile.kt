@@ -1,5 +1,6 @@
 package com.danza.avatar
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -30,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.danza.avatar.ui.theme.AvatarTheme
+import com.example.tugas1.modul2.Muka
 
 class Profile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +46,10 @@ class Profile : ComponentActivity() {
                     ProfileScreen(
                         nama = nama,
                         nim = nim,
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        onEditAvatarClick = {
+                            startActivity(Intent(this@Profile, Muka::class.java))
+                        }
                     )
                 }
             }
@@ -52,7 +58,7 @@ class Profile : ComponentActivity() {
 }
 
 @Composable
-fun ProfileScreen(nama: String, nim: String, modifier: Modifier = Modifier) {
+fun ProfileScreen(nama: String, nim: String, modifier: Modifier = Modifier, onEditAvatarClick: () -> Unit = {}) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -106,7 +112,7 @@ fun ProfileScreen(nama: String, nim: String, modifier: Modifier = Modifier) {
 
                 // Tombol Edit Avatar yang menonjol
                 SmallFloatingActionButton(
-                    onClick = { /* Logika Edit */ },
+                    onClick = onEditAvatarClick,
                     shape = CircleShape,
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = MaterialTheme.colorScheme.onPrimary,
